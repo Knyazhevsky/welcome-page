@@ -9,13 +9,29 @@ body {
   width: 100%;
 }
 
+#app {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+}
+
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  width: 100%;
+}
+
 body {
+  padding: var(--spacing-48) 0;
+  min-height: 100vh;
+  font-family: var(--font-family-base);
   background-color: var(--color-background);
   color: var(--color-text-primary);
   display: flex;
   flex-direction: column;
   flex: 1;
-  align-items: center;
   transition:
     background-color var(--transition-base),
     color var(--transition-base);
@@ -24,6 +40,7 @@ body {
 a {
   color: var(--color-accent);
   transition: color var(--transition-base);
+  text-decoration: none;
 
   &:hover {
     text-decoration: underline;
@@ -33,14 +50,4 @@ a {
     outline: 2px solid var(--focus-outline-color);
     outline-offset: var(--focus-outline-offset);
   }
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-  max-width: var(--container-width);
-  margin: 0 auto;
 }
