@@ -1,13 +1,13 @@
 <template>
   <section class="hero">
     <div class="hero__content">
-      <p class="hello">hello<span class="hello__dot">.</span></p>
+      <p class="hero__greeting">hello<span class="hero__greeting-mark">.</span></p>
       <h1 class="hero__title">Boris Knyazhevsky</h1>
 
-      <div class="skills">
-        <p class="skills__role">Software Engineer</p>
-        <ul class="skills__list">
-          <li v-for="skill in skills" :key="skill" class="skills__item">{{ skill }}</li>
+      <div class="hero__skills">
+        <p class="hero__role">Software Engineer</p>
+        <ul class="hero__skills-list">
+          <li v-for="skill in skills" :key="skill" class="hero__skill">{{ skill }}</li>
         </ul>
       </div>
 
@@ -27,9 +27,12 @@
     </div>
 
     <div class="hero__photo">
-      <img alt="Boris Knyazhevsky" class="hero__img" src="/img/me.png" />
-      <div class="ball__orbit">
-        <div class="ball__satellite"></div>
+      <div class="hero__portrait">
+        <img alt="Boris Knyazhevsky" class="hero__img" src="/img/me.png" />
+      </div>
+
+      <div class="hero__orbit">
+        <div class="hero__satellite"></div>
       </div>
     </div>
   </section>
@@ -53,23 +56,23 @@ const links = [
 </script>
 
 <style lang="scss" scoped>
-.hello {
-  font-size: var(--font-size-caption);
-  line-height: var(--line-height-caption);
-  margin: 0 0 var(--spacing-8);
-  text-transform: uppercase;
-
-  &__dot {
-    color: var(--color-accent);
-  }
-}
-
 .hero {
   align-items: start;
   display: grid;
   grid-template-columns: 40fr 60fr;
   padding-bottom: var(--spacing-96);
   padding-top: var(--spacing-64);
+
+  &__greeting {
+    font-size: var(--font-size-caption);
+    line-height: var(--line-height-caption);
+    margin: 0 0 var(--spacing-8);
+    text-transform: uppercase;
+
+    &-mark {
+      color: var(--color-accent);
+    }
+  }
 
   &__content {
     display: flex;
@@ -88,13 +91,32 @@ const links = [
     position: relative;
   }
 
+  &__portrait {
+    flex: 0 0 110%;
+    position: relative;
+    z-index: 2;
+
+    &::before {
+      background-color: var(--color-surface);
+      content: '';
+      inset: 0;
+      mask-image: url('/img/me.png');
+      mask-position: center;
+      mask-repeat: no-repeat;
+      mask-size: 100% 100%;
+      pointer-events: none;
+      position: absolute;
+      z-index: 0;
+    }
+  }
+
   &__img {
     filter: brightness(0.8) contrast(1.05) drop-shadow(0 0 24px rgb(119 232 200 / 20%));
     height: auto;
     mask-image: linear-gradient(to bottom, black 80%, transparent 98%);
     max-width: unset;
-    width: 110%;
-    z-index: 2;
+    width: 100%;
+    z-index: 1;
 
     &:hover {
       filter: brightness(0.9) contrast(1.03) drop-shadow(0 0 24px rgb(119 232 200 / 30%));
@@ -129,9 +151,30 @@ const links = [
       text-decoration: none;
     }
   }
-}
 
-.ball {
+  &__role {
+    color: var(--color-text-primary);
+    margin: 0;
+  }
+
+  &__skills {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+
+    &-list {
+      display: flex;
+      gap: var(--spacing-16);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  &__skill {
+    color: var(--color-text-secondary);
+  }
+
   &__orbit {
     animation: rotate 40s linear infinite;
     aspect-ratio: 1 / 1;
@@ -156,38 +199,15 @@ const links = [
     transform: translateY(-50%) translateX(-50%);
     width: 10px;
   }
-}
 
-.skills {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-4);
+  @keyframes rotate {
+    0% {
+      transform: translateX(-50%) rotate(0deg);
+    }
 
-  &__role {
-    color: var(--color-text-primary);
-    margin: 0;
-  }
-
-  &__list {
-    display: flex;
-    gap: var(--spacing-16);
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  &__item {
-    color: var(--color-text-secondary);
-  }
-}
-
-@keyframes rotate {
-  0% {
-    transform: translateX(-50%) rotate(0deg);
-  }
-
-  100% {
-    transform: translateX(-50%) rotate(360deg);
+    100% {
+      transform: translateX(-50%) rotate(360deg);
+    }
   }
 }
 </style>

@@ -1,11 +1,9 @@
 <template>
-  <section aria-labelledby="statement-text" class="statement">
+  <div class="statement">
     <span aria-hidden="true" class="statement__mark">“</span>
-    <blockquote id="statement-text" class="statement__quote">
-      I enjoy designing software that remains understandable as it grows.
-    </blockquote>
+    <p class="statement__text">I enjoy designing software that remains understandable as it grows.</p>
     <span aria-hidden="true" class="statement__divider"></span>
-  </section>
+  </div>
 </template>
 
 <style lang="scss" scoped>
@@ -23,7 +21,7 @@
     line-height: 32px;
   }
 
-  &__quote {
+  &__text {
     color: var(--color-text-primary);
     font-size: var(--font-size-h2);
     line-height: var(--line-height-h2);

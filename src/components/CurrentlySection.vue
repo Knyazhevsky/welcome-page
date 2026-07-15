@@ -5,13 +5,13 @@
       <span aria-hidden="true" class="currently__line"></span>
     </div>
 
-    <ol class="currently__list">
+    <ul class="currently__list">
       <li v-for="item in items" :key="item.title" class="currently__item">
         <AppIcon class="currently__icon" :name="item.icon" :size="28" />
         <h3 class="currently__item-title">{{ item.title }}</h3>
         <p class="currently__description">{{ item.description }}</p>
       </li>
-    </ol>
+    </ul>
   </section>
 </template>
 

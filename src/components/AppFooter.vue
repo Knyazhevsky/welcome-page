@@ -1,15 +1,15 @@
 <template>
-  <footer class="ftr">
-    <div class="ftr__content">
-      <p class="city">Almaty, Kazakhstan</p>
-      <p class="copyright">&copy; 2026</p>
-      <p class="ftr__aside">I use Arch, btw.</p>
+  <footer class="app-footer">
+    <div class="app-footer__content">
+      <p>Almaty, Kazakhstan</p>
+      <p><small>&copy;2026</small></p>
+      <p class="app-footer__aside">I use Arch, btw.</p>
     </div>
   </footer>
 </template>
 
 <style lang="scss" scoped>
-.ftr {
+.app-footer {
   border-top: var(--main-border);
   color: var(--color-text-secondary);
   padding-bottom: var(--spacing-34);
@@ -27,5 +27,9 @@
     font-size: var(--font-size-caption);
     line-height: var(--line-height-caption);
   }
+}
+
+p {
+  margin: 0;
 }
 </style>

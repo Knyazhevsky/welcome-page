@@ -1,7 +1,7 @@
 <template>
   <div class="app-layout">
     <NavBar />
-    <main class="main">
+    <main class="app-layout__main">
       <router-view />
     </main>
     <AppFooter />
@@ -25,10 +25,10 @@ import NavBar from './NavBar.vue'
   max-width: var(--container-width);
   overflow: visible;
   width: 100%;
-}
 
-.main {
-  flex: 1;
-  padding-inline: var(--spacing-64);
+  &__main {
+    flex: 1;
+    padding-inline: var(--spacing-64);
+  }
 }
 </style>
